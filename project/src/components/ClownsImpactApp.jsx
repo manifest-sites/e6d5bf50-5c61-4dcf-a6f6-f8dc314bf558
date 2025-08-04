@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, Button, Typography, Row, Col, Statistic, Progress, Tag } from 'antd'
+import { Card, Button, Typography, Row, Col, Statistic, Progress, Tag, ConfigProvider, theme } from 'antd'
 import { SmileOutlined, FrownOutlined, HeartOutlined, ExperimentOutlined } from '@ant-design/icons'
 
 const { Title, Paragraph, Text } = Typography
@@ -46,13 +46,18 @@ function ClownsImpactApp() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4">
+    <ConfigProvider
+      theme={{
+        algorithm: theme.darkAlgorithm,
+      }}
+    >
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
-          <Title level={1} className="text-4xl md:text-5xl mb-4">
+          <Title level={1} className="text-4xl md:text-5xl mb-4 text-white">
             🤡 The Impact of Clowns on Children
           </Title>
-          <Paragraph className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <Paragraph className="text-lg text-gray-300 max-w-3xl mx-auto">
             Exploring the psychological and emotional effects of clown interactions on child development and well-being
           </Paragraph>
         </div>
@@ -87,7 +92,7 @@ function ClownsImpactApp() {
                 </div>
                 
                 <div className="mb-4">
-                  <Text className="text-gray-600">Reported in studies:</Text>
+                  <Text className="text-gray-400">Reported in studies:</Text>
                   <Progress
                     percent={impact.percentage}
                     strokeColor={impact.color === 'green' ? '#52c41a' : '#f5222d'}
@@ -117,7 +122,7 @@ function ClownsImpactApp() {
           </Title>
           <Row gutter={[24, 24]}>
             <Col xs={24} md={8}>
-              <Card size="small" className="bg-blue-50">
+              <Card size="small" className="bg-blue-900/30">
                 <Title level={5}>Age Factor</Title>
                 <Paragraph>
                   Children aged 3-5 show more varied responses, while 6-12 year olds generally have more predictable reactions.
@@ -125,7 +130,7 @@ function ClownsImpactApp() {
               </Card>
             </Col>
             <Col xs={24} md={8}>
-              <Card size="small" className="bg-green-50">
+              <Card size="small" className="bg-green-900/30">
                 <Title level={5}>Context Matters</Title>
                 <Paragraph>
                   Hospital clowns show 85% positive impact, while surprise encounters can increase anxiety by 40%.
@@ -133,7 +138,7 @@ function ClownsImpactApp() {
               </Card>
             </Col>
             <Col xs={24} md={8}>
-              <Card size="small" className="bg-purple-50">
+              <Card size="small" className="bg-purple-900/30">
                 <Title level={5}>Long-term Effects</Title>
                 <Paragraph>
                   Most negative reactions fade within 2-3 weeks, while positive memories can last for years.
@@ -155,7 +160,8 @@ function ClownsImpactApp() {
           </Button>
         </Card>
       </div>
-    </div>
+      </div>
+    </ConfigProvider>
   )
 }
 
